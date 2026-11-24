@@ -1,14 +1,13 @@
 <?php
 $host = 'localhost';
-$dbname = 'tecnostock'; // El nombre de tu base de datos
-$username = 'root';     // Usuario por defecto de XAMPP
-$password = '';         // Contraseña por defecto (suele estar vacía)
+$dbname = 'tecnostock';
+$usuario_db = 'root';
+$password_db = '';
 
 try {
-    $conexion = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-    // Configurar PDO para que muestre los errores
+    $conexion = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $usuario_db, $password_db);
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conexion->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     die("Error de conexión: " . $e->getMessage());
 }
-?>
